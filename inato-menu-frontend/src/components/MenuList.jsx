@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Container, Box, Card, CardMedia, CardContent, Typography, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
 
-const Home = () => {
+const MenuList = () => {
   // Sample menu items (replace with API call later)
   const [menus, setMenus] = useState([
     {
@@ -49,4 +48,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default MenuList
