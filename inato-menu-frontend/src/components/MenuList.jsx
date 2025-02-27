@@ -17,6 +17,13 @@ const MenuList = () => {
       description: 'Nice to cook fortnightly',
       image: 'https://placehold.co/400',
       link: 'https://panlasangpinoy.com/bam-i-cebuano-pansit-recipe/',
+    },
+    {
+      id: 3,
+      title: 'Utan Bisaya',
+      description: 'Good for daily food',
+      image: 'https://placehold.co/400',
+      link: 'https://panlasangpinoy.com/utan-bisaya/',
     }
   ])
 
@@ -30,7 +37,7 @@ const MenuList = () => {
         }}
       >
         {menus.map((menu) => (
-          <Box key={menu.id} sx={{ width: { xs: "100%", sm: "48%", md: "32%" } }}>
+          <Box key={menu.id} sx={{ width: { xs: "45%", sm: "48%", md: "31%" } }}>
             <Card>
               <CardMedia component="img" height="140" image={menu.image} alt={menu.title} />
               <CardContent>
@@ -48,4 +55,4 @@ const MenuList = () => {
   )
 }
 
-export default MenuList
+export default MenuList;
