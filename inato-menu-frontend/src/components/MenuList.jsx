@@ -3,29 +3,24 @@ import { Container, Box, Card, CardMedia, CardContent, Typography, Button } from
 
 const MenuList = () => {
   // Sample menu items (replace with API call later)
-  const [menus, setMenus] = useState([
-    {
-      id: 1,
-      title: 'Pork Adobo',
-      description: 'Easy to prepare',
-      image: 'https://placehold.co/400',
-      link: 'https://panlasangpinoy.com/filipino-food-pork-adobo-recipe/',
-    },
-    {
-      id: 2,
-      title: 'Bam-i',
-      description: 'Nice to cook fortnightly',
-      image: 'https://placehold.co/400',
-      link: 'https://panlasangpinoy.com/bam-i-cebuano-pansit-recipe/',
-    },
-    {
-      id: 3,
-      title: 'Utan Bisaya',
-      description: 'Good for daily food',
-      image: 'https://placehold.co/400',
-      link: 'https://panlasangpinoy.com/utan-bisaya/',
-    }
-  ])
+  const [menus, setMenus] = useState([]);
+
+  useEffect(() => {
+    const fetchMenus = async () => {
+      try {
+        const response = await fetch("https://inato-menu-backend.onrender.com/menus");
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        setMenus(data);
+      } catch (error) {
+        console.error("Error fetching menus:", error);
+      }
+    };
+
+    fetchMenus();
+  }, []);
 
   useEffect(() => {
     const cardMenus = document.querySelectorAll('.card-menu');
