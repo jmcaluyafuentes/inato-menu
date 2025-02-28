@@ -1,6 +1,8 @@
-require("dotenv").config();
-const mongoose = require("mongoose");
-const Menu = require("./models/Menu"); // Adjust the path based on your project structure
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import Menu from "./models/Menu.js";
+
+dotenv.config();
 
 // MongoDB Connection
 mongoose

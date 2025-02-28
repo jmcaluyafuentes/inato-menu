@@ -1,8 +1,10 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-require("dotenv").config();
-const Menu = require("./models/Menu"); // Import Menu model
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+import Menu from "./models/Menu.js";
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
