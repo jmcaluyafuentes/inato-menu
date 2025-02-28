@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require("path");
 require("dotenv").config();
+const Menu = require("./models/Menu"); // Import Menu model
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,19 +17,14 @@ mongoose
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
-// Menu Schema
-const menuSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  image: String,
-  link: String,
-});
-const Menu = mongoose.model("Menu", menuSchema);
-
 // Routes
 app.get("/menus", async (req, res) => {
-  const menus = await Menu.find();
-  res.json(menus);
+  try {
+    const menus = await Menu.find();
+    res.json(menus);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
 });
 
 // Start Server
