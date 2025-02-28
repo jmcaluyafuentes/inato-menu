@@ -33,17 +33,18 @@ const MenuList = () => {
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          gap: 3,
+          justifyContent: 'space-between',
+          gap: { xs: 1, sm: 3, md: 4 },
         }}
       >
         {menus.map((menu) => (
-          <Box key={menu.id} sx={{ width: { xs: "45%", sm: "48%", md: "31%" } }}>
+          <Box key={menu.id} sx={{ width: { xs: "48%", sm: "48%", md: "31%" } }}>
             <Card>
               <CardMedia component="img" height="140" image={menu.image} alt={menu.title} />
-              <CardContent>
+              <CardContent sx={{ minHeight: 120, maxHeight: 300 }}>
                 <Typography variant="h6">{menu.title}</Typography>
-                <Typography variant="body2" color="textSecondary">{menu.description}</Typography>
-                <Button size="small" color="primary" href={menu.link} target="_blank">
+                <Typography variant="body1" color="textSecondary">{menu.description}</Typography>
+                <Button size="small" color="primary" variant="outlined" href={menu.link} target="_blank" sx={{ mt: 'auto' }}>
                   View
                 </Button>
               </CardContent>
