@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Box, Card, CardMedia, CardContent, Typography, Button } from '@mui/material';
 
 const MenuList = () => {
@@ -27,6 +27,15 @@ const MenuList = () => {
     }
   ])
 
+  useEffect(() => {
+    const cardMenus = document.querySelectorAll('.card-menu');
+    const maxHeight = Array.from(cardMenus).reduce((max, cardMenu) => Math.max(max, cardMenu.clientHeight), 0);
+    
+    cardMenus.forEach(cardMenu => {
+      cardMenu.style.height = `${maxHeight}px`;
+    })
+  })
+    
   return (
     <Container sx={{ mt: 4 }}>
       <Box
@@ -38,18 +47,16 @@ const MenuList = () => {
         }}
       >
         {menus.map((menu) => (
-          <Box key={menu.id} sx={{ width: { xs: "48%", sm: "48%", md: "31%" } }}>
-            <Card>
-              <CardMedia component="img" height="140" image={menu.image} alt={menu.title} />
-              <CardContent sx={{ minHeight: 120, maxHeight: 300 }}>
-                <Typography variant="h6">{menu.title}</Typography>
-                <Typography variant="body1" color="textSecondary">{menu.description}</Typography>
-                <Button size="small" color="primary" variant="outlined" href={menu.link} target="_blank" sx={{ mt: 'auto' }}>
-                  View
-                </Button>
-              </CardContent>
-            </Card>
-          </Box>
+          <Card className="card-menu" key={menu.id} sx={{ width: { xs: "48%", sm: "48%", md: "31%" } }}>
+            <CardMedia component="img" height="140" image={menu.image} alt={menu.title} />
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', minHeight: 120, maxHeight: 300 }}>
+              <Typography variant="h6">{menu.title}</Typography>
+              <Typography variant="body1" color="textSecondary">{menu.description}</Typography>
+              <Button size="small" color="primary" variant="outlined" href={menu.link} target="_blank" sx={{ mt: 'auto' }}>
+                View
+              </Button> 
+            </CardContent>
+          </Card>
         ))}
       </Box>
     </Container>

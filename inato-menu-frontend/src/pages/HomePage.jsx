@@ -28,11 +28,11 @@ const HomePage = () => {
         >
           <Typography 
             variant="h3" 
-            component="h1" 
             sx={{ 
               display: 'block',
+              fontSize: { xs: '36px', sm: '42px', md: '48px'},
               color: 'black', 
-              // width: { xs: '90%', sm: '70%', md: '50%' },
+              width: { xs: '200px', sm: '250px', md: '50%' },
               fontWeight: 'bold',
               margin: '0 auto',
               textAlign: 'center'
@@ -49,11 +49,15 @@ const HomePage = () => {
               backgroundColor: 'rgba(255, 253, 253, 0.5)', 
               borderRadius: '5px', 
               padding: '5px',
-              fontSize: { xs: '20px', sm: '25px', md: '25px' },
+              fontSize: { xs: '20px', sm: '23px', md: '25px' },
+              width: { xs: '185px', sm: '230px', md: '270px'},
+              margin: 'auto',
+              fontWeight: 'bold',
+              color: 'green',
             }} 
               color="primary"
           >
-            List of menus to easily decide what to cook next.
+            What to eat next?
           </Typography>
         </Box>
       </Box>
